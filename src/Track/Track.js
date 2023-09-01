@@ -1,12 +1,13 @@
+import React from "react";
 
-
-function Track() {
+export default function Track(props) {
+    const { track } = props;
+    
     return (
-        <>
-            <p>Song Name Here</p>
-            <p>Artist Name Here</p>
-        </>
+        <div className="trackContainer">
+            <p className="songName">{track.trackName}</p>
+            <p>{track.artist} | {track.album}</p>
+            <button className="btnAddToPlaylist">+</button>
+        </div>
     );
 }
-
-export default Track;

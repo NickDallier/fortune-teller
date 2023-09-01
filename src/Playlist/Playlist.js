@@ -1,15 +1,12 @@
 import Track from "../Track/Track";
 
-function Playlist () {
+export default function Playlist () {
     return(
         <div className="playlistContainer">
             <h2>Playlist</h2>
             <div className="trackContainer">
-                <Track />
             </div>
-            <button>Save to Spotify</button>
+            <button className="btnSaveSpotify">SAVE TO SPOTIFY</button>
         </div>
     );
 }
-
-export default Playlist;

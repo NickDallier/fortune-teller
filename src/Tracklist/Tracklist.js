@@ -1,12 +1,13 @@
 import Track from "../Track/Track";
+import React, { useState } from "react";
 
-function Tracklist() {
-    return (
-        <div className="trackContainer">
-            <Track />
-        </div>
+export default function Tracklist(props) {
+    return (    
+        <>  
+            {props.tracks.map((track) => ( 
+                <Track key={track.id} track={track} />              
+            ))}
+        </>
     );
 }
-
-export default Tracklist;
 

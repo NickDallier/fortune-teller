@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchBar() {
+export default function SearchBar(props) {
     const [searchText, setSearchText] = useState("");
 
     const handleTextChange = (event) => {
@@ -10,31 +10,23 @@ function SearchBar() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (searchText.length > 0) {
-            /*
-          const thought = {
-            id: generateId(),
-            text: text,
-            expiresAt: getNewExpirationTime(),
-          };
-          props.addThought(thought);
-          */
-          setSearchText("");
+            props.searchForArtist(searchText);
         }
     }
+
     return (
         <div className="searchBarContainer">
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text"
-                placeholder="Search for any song..."
+                placeholder="Search for any artist..."
                 value={searchText}
                 onChange={handleTextChange}
+                className="searchBar"
                 />
                 <br />
-                <input type="submit" value="Search" />
+                <input type="submit" value="SEARCH" className="btnSearch" />
             </form>   
         </div>
     );
 }
-
-export default SearchBar;

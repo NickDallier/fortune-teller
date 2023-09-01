@@ -1,10 +1,10 @@
 import Tracklist from '../Tracklist/Tracklist.js';
 
-function SearchResults () {
+function SearchResults (props) {
     return(
         <div className="searchResultsContainer">
             <h2>Results</h2>
-            <Tracklist />
+            <Tracklist tracks={props.tracks} />
         </div>
     );
 }
