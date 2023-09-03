@@ -1,12 +1,25 @@
 import Track from "../Track/Track";
+import React, { useState } from "react";
 
-export default function Playlist () {
+export default function Playlist (props) {
+    const [playlistName, setPlaylistName] = useState("");
+
+    const handlePlaylistNameChange = (event) => {
+        setPlaylistName(event.target.value);
+    }
+
     return(
-        <div className="playlistContainer">
-            <h2>Playlist</h2>
-            <div className="trackContainer">
-            </div>
-            <button className="btnSaveSpotify">SAVE TO SPOTIFY</button>
-        </div>
+        <>  
+            <input 
+                type="text"
+                placeholder="Name your playlist..."
+                value={playlistName}
+                onChange={handlePlaylistNameChange}
+                className="playlistNameText"
+            />
+            {props.playlistTracks.map((playlistTrack) => ( 
+                <Track key={playlistTrack.id} track={playlistTrack} isPlaylist={true} removeFromPlaylist={props.removeFromPlaylist} />              
+            ))}
+        </>
     );
 }
