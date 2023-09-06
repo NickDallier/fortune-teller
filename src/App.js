@@ -33,10 +33,18 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Jammming</h1>
+        <nav>
+            <p className="logo"><a href="http://nickdallier.ca">Nick Dallier</a></p>
+            <ul>
+                <li><a href="http://nickdallier.ca#aboutMe">About Me</a></li>
+                <li><a href="http://nickdallier.ca#contact">Contact</a></li>
+                <li><a href="https://nickdallier-jamming.netlify.app">Jammming</a></li>
+            </ul>
+        </nav>
       </header>
       <main className="App-main">
           <> 
+          <h1>Jammming</h1>
           <SearchBar searchForArtist={searchForArtist} />
           <div className="search-playlist-container">
             
