@@ -17,7 +17,7 @@ export default function Track(props) {
 
     return (
         <div className="trackContainer">
-            <p className="songName">{track.trackName}</p>
+            <p className="songName">{track.name}</p>
             <p>{track.artist} | {track.album}</p>
             <button className={btnClass} onClick={btnClickFunction}>{btnText}</button>
         </div>

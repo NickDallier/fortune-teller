@@ -11,6 +11,8 @@ export default function SearchBar(props) {
         event.preventDefault();
         if (searchText.length > 0) {
             props.searchForArtist(searchText);
+        } else {
+            alert('Please type a search term');
         }
     }
 
@@ -19,13 +21,14 @@ export default function SearchBar(props) {
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text"
-                placeholder="Search for any artist..."
+                placeholder="Search for a track..."
                 value={searchText}
                 onChange={handleTextChange}
                 className="searchBar"
+                id="searchBar"
                 />
                 <br />
-                <input type="submit" value="SEARCH" className="btnSearch" />
+                <input type="submit" value="SEARCH" className="btnSearch" id="btnSearch" />
             </form>   
         </div>
     );
