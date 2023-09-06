@@ -25,7 +25,7 @@ const Spotify = {
     },
 
     async search(searchText) {
-        const token = Spotify.getAccessToken();
+        const token = await Spotify.getAccessToken();
 
         const spotifyBaseUrl = 'https://api.spotify.com/v1/search';
         const requestParams = `?type=track&q=${searchText}`;
@@ -52,7 +52,7 @@ const Spotify = {
     },
 
     async savePlaylist(playlistName, playlistTracks) {
-        const token = Spotify.getAccessToken();
+        const token = await Spotify.getAccessToken();
         const spotifyBaseUrl = 'https://api.spotify.com/v1/me';
         const urlToFetch = spotifyBaseUrl;
         let userId = '';
