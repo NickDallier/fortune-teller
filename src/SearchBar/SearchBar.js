@@ -1,7 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function SearchBar(props) {
+export default function SearchBar({searchForTrack}) {
     const [searchText, setSearchText] = useState("");
+
+    useEffect(() => {
+        const oldSearchText = JSON.parse(localStorage.getItem('searchText'));
+        if (oldSearchText) {
+            setSearchText(oldSearchText);
+            searchForTrack(oldSearchText);
+            localStorage.removeItem('searchText');
+        }
+      }, []);
+
+    useEffect(() => {
+        localStorage.setItem('searchText', JSON.stringify(searchText));
+      }, [searchText]);
+
+
 
     const handleTextChange = (event) => {
         setSearchText(event.target.value);
@@ -10,7 +25,7 @@ export default function SearchBar(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (searchText.length > 0) {
-            props.searchForArtist(searchText);
+            searchForTrack(searchText);
         } else {
             alert('Please type a search term');
         }

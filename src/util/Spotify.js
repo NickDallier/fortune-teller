@@ -3,8 +3,8 @@
 const Spotify = {
     async getAccessToken() {
         const clientId = "a4d6722dadd14db4b15524f607ffa34b"; 
-        //const redirectURI = 'http://localhost:3000';
-        const redirectURI = 'https://nickdallier-jamming.netlify.app/';
+        const redirectURI = 'http://localhost:3000';
+        //const redirectURI = 'https://nickdallier-jamming.netlify.app/';
         let accessToken = '';
 
         if (accessToken) {
@@ -16,17 +16,18 @@ const Spotify = {
 
         if (urlAccessToken && urlExpiresIn) {
             accessToken = urlAccessToken[1];
-            //const expiresIn = Number(urlExpiresIn[1]);
+            //const expiresInSeconds = Number(urlExpiresIn[1]);
 
             return accessToken;
         } else {
-            const redirect = await `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+            const searchText = document.getElementById('searchBar').value;
+            const redirect = await `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}&searchText=${searchText}`;
             window.location = redirect;
         }
     },
 
     async search(searchText) {
-        const token = await Spotify.getAccessToken();
+        const token = await Spotify.getAccessToken(searchText);
 
         const spotifyBaseUrl = 'https://api.spotify.com/v1/search';
         const requestParams = `?type=track&q=${searchText}`;
