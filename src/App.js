@@ -63,14 +63,17 @@ export default function App() {
         }
         
         {accessToken && 
+        <>
           <SearchBar searchForTrack={searchForTrack} />
+          <div className="search-playlist-container">
+          <SearchResults tracks={tracks} addToPlaylist={addToPlaylist} />
+          <div className="playlistContainer">
+              <Playlist playlistTracks={playlistTracks} removeFromPlaylist={removeFromPlaylist} savePlaylistToSpotify={savePlaylistToSpotify} />
+          </div>  
+          </div>
+        </> 
         }
-        <div className="search-playlist-container">
-        <SearchResults tracks={tracks} addToPlaylist={addToPlaylist} />
-        <div className="playlistContainer">
-            <Playlist playlistTracks={playlistTracks} removeFromPlaylist={removeFromPlaylist} savePlaylistToSpotify={savePlaylistToSpotify} />
-        </div>  
-        </div>
+        
       </main>
     </div>
   );
