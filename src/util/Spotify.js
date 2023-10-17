@@ -3,8 +3,8 @@
 const Spotify = {
     async getAccessToken() {
         const clientId = "a4d6722dadd14db4b15524f607ffa34b"; 
-        const redirectURI = 'http://localhost:3000';
-        //const redirectURI = 'https://nickdallier-jamming.netlify.app/';
+        //const redirectURI = 'http://localhost:3000';
+        const redirectURI = 'https://nickdallier-jamming.netlify.app/';
         let accessToken = '';
 
         if (accessToken) {
