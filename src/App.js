@@ -9,6 +9,18 @@ export default function App() {
   const [tracks, setTracks] = useState([]);
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
+  let accessToken = '';
+
+  const urlAccessToken = window.location.href.match(/access_token=([^&]*)/);
+  
+  if (urlAccessToken) {
+    accessToken = urlAccessToken[1];
+  }
+  
+  const connectToSpotify = () => {
+    Spotify.getAccessToken();
+  }
+
   const searchForTrack = (searchText) => {  
     Spotify.search(searchText).then(track => {
       setTracks(track);
@@ -43,18 +55,22 @@ export default function App() {
         </nav>
       </header>
       <main className="App-main">
-          <> 
-            <h1>Jammming</h1>
-            <p>Search for any track and add songs to a Custom playlist!</p>
-            <p>You can also name your playlist and save it to your own spotify account!</p>
-            <SearchBar searchForTrack={searchForTrack} />
-            <div className="search-playlist-container">
-            <SearchResults tracks={tracks} addToPlaylist={addToPlaylist} />
-            <div className="playlistContainer">
-                <Playlist playlistTracks={playlistTracks} removeFromPlaylist={removeFromPlaylist} savePlaylistToSpotify={savePlaylistToSpotify} />
-            </div>  
-            </div>
-          </>
+        <h1>Jammming</h1>
+        <p>Search for any track and add songs to a Custom playlist!</p>
+        <p>You can also name your playlist and save it to your own spotify account!</p>
+        {!accessToken && 
+          <button className="btnConnect" id="btnConnect" onClick={connectToSpotify}>CONNECT TO SPOTIFY</button>
+        }
+        
+        {accessToken && 
+          <SearchBar searchForTrack={searchForTrack} />
+        }
+        <div className="search-playlist-container">
+        <SearchResults tracks={tracks} addToPlaylist={addToPlaylist} />
+        <div className="playlistContainer">
+            <Playlist playlistTracks={playlistTracks} removeFromPlaylist={removeFromPlaylist} savePlaylistToSpotify={savePlaylistToSpotify} />
+        </div>  
+        </div>
       </main>
     </div>
   );

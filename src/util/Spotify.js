@@ -17,17 +17,15 @@ const Spotify = {
         if (urlAccessToken && urlExpiresIn) {
             accessToken = urlAccessToken[1];
             //const expiresInSeconds = Number(urlExpiresIn[1]);
-
             return accessToken;
         } else {
-            const searchText = document.getElementById('searchBar').value;
-            const redirect = await `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}&searchText=${searchText}`;
+            const redirect = await `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
             window.location = redirect;
         }
     },
 
     async search(searchText) {
-        const token = await Spotify.getAccessToken(searchText);
+        const token = await Spotify.getAccessToken();
 
         const spotifyBaseUrl = 'https://api.spotify.com/v1/search';
         const requestParams = `?type=track&q=${searchText}`;

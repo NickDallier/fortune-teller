@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function SearchBar({searchForTrack}) {
-    const [searchText, setSearchText] = useState("");
-
-    useEffect(() => {
-        const oldSearchText = JSON.parse(localStorage.getItem('searchText'));
-        if (oldSearchText) {
-            setSearchText(oldSearchText);
-            searchForTrack(oldSearchText);
-            localStorage.removeItem('searchText');
-        }
-      }, []);
-
-    useEffect(() => {
-        localStorage.setItem('searchText', JSON.stringify(searchText));
-      }, [searchText]);
-
-
+    const [searchText, setSearchText] = useState('');
 
     const handleTextChange = (event) => {
         setSearchText(event.target.value);
