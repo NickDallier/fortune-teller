@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import GenerateMsgButton from './GenerateMsgButton.js';
+import React from "react";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <nav>
+          <p className="logo"><a href="http://nickdallier.ca">Nick Dallier</a></p>
+          <ul>
+              <li><a href="http://nickdallier.ca#aboutMe">About Me</a></li>
+              <li><a href="http://nickdallier.ca#contact">Contact</a></li>
+              <li><a href="http://nickdallier.ca#contact">Fortune Generator</a></li>
+              <li><a href="https://nickdallier-jamming.netlify.app">Jammming</a></li>
+          </ul>
+      </nav>
       </header>
+      <main className="App-main">
+        <GenerateMsgButton />
+      </main>
     </div>
   );
 }
-
-export default App;
